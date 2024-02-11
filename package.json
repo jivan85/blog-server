@@ -1,0 +1,22 @@
+{
+  "name": "part4",
+  "version": "1.0.0",
+  "description": "server for Blog project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "deploy:full": "git add . && git commit -m serverbuild && git push origin main"
+  },
+  "author": "Ivan Kovalchuk",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
