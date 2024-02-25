@@ -19,12 +19,13 @@ blogsRouter.get('/', async (request, response, next) => {
 
 blogsRouter.post('/', async (request, response, next) => {
   const body = request.body
+  console.log('TOKEN: ',getTokenFrom(request))
   const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET)
   if (!decodedToken.id) {
     return response.status(401).json({ error: 'token invalid' })
   }
   const user = await User.findById(decodedToken.id)
-  
+
   if(!body.title||!body.author){
     response.status(400).json({})
   }
