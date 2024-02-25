@@ -39,3 +39,22 @@ describe('when there is initially one user in db', () => {
     assert(usernames.includes(newUser.username))
   },100000)
 })
+
+describe('test password and username check', () => {
+  test('creation succeeds with a fresh username', async () => {
+    const usersAtStart = await helper.usersInDb()
+
+    const newUser = {
+      name: 'Matti Luukkainen',
+      password: 'salainen',
+    }
+
+    const response = await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(400)
+    
+    expect(response.body.error).toEqual("username missing")
+
+  },100000)
+})
