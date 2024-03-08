@@ -19,9 +19,9 @@ blogsRouter.get('/', async (request, response, next) => {
 
 blogsRouter.post('/', async (request, response, next) => {
   const body = request.body
-  console.log('TOKEN: ',getTokenFrom(request))
+  console.log('TOKEN: ',request.token)
   try{
-    const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET)
+    const decodedToken = jwt.verify(request.token, process.env.SECRET)
   }
   catch(error) {
     return response.status(401).json({ error: 'token invalid' })
