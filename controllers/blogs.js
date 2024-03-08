@@ -29,6 +29,7 @@ blogsRouter.post('/', async (request, response, next) => {
   if(!request.user){
     return response.status(401).json({ error: 'token invalid' })
   }
+  console.log('User Id: ',request.user)
   const user = await User.findById(request.user)
   if(!body.title||!body.author){
     response.status(400).json({})
