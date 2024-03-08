@@ -54,6 +54,7 @@ blogsRouter.delete('/:id', async (request, response) => {
   if(!blog){
     return response.status(404).json({ error: 'record hasn\'t been found' })
   }
+  logger.info("Blog", blog)
   if(blog.user.id===decodedToken.id){
     await Blog.findByIdAndDelete(request.params.id)
     response.status(204).end()}
