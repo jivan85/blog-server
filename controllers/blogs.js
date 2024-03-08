@@ -50,7 +50,7 @@ blogsRouter.delete('/:id', async (request, response) => {
   if (!decodedToken||!decodedToken.id) {
     return response.status(401).json({ error: 'token invalid' })
   }
-  const blog = Blog.findById(request.params.id)
+  const blog = await Blog.findById(request.params.id)
   if(!blog){
     return response.status(404).json({ error: 'record hasn\'t been found' })
   }
